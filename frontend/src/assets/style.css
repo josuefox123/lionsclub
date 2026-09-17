@@ -65,7 +65,7 @@ body {
   background: var(--white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -236,8 +236,6 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 4px 12px rgba(235,183,0,.4);
 }
 
-
-
 /* ──────────────────────────────────────────────────────────────────────────────
    BOUTONS OFFICIELS
    ────────────────────────────────────────────────────────────────────────────── */
@@ -405,20 +403,22 @@ img { max-width: 100%; display: block; }
   background: linear-gradient(110deg, rgba(0,25,80,.97) 0%, rgba(0,40,120,.92) 50%, rgba(90,20,100,.85) 100%);
 }
 
-/* Conteneur de texte hero transparent sans boîte opaque */
+/* Card en verre pour maximiser la lisibilité du texte sur tout écran */
 .hero-text-card {
   position: relative;
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
+  background: rgba(0, 18, 55, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2.5rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
 }
 @media (max-width: 575px) {
   .hero-text-card {
-    padding: 0 !important;
-    background: transparent !important;
+    padding: 1.5rem 1.25rem;
+    background: rgba(0, 15, 45, 0.70);
+    border-radius: var(--radius-md);
   }
 }
 
@@ -893,126 +893,42 @@ img { max-width: 100%; display: block; }
 }
 
 /* ──────────────────────────────────────────────────────────────────────────────
-   FOOTER OFFICIEL — STYLE ULTRA-RESPONSIVE MOBILE & DESKTOP
+   FOOTER
    ────────────────────────────────────────────────────────────────────────────── */
 .footer-official {
   background: var(--lions-blue-dark);
   border-top: 4px solid var(--lions-yellow);
-  padding: 3.5rem 0 2rem;
+  padding: 3.5rem 0 1.5rem;
 }
-
 .footer-brand-name {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 900;
   color: var(--white);
   text-transform: uppercase;
   letter-spacing: .04em;
-  line-height: 1.2;
+  margin-bottom: .2rem;
 }
-.footer-brand-sub {
-  font-size: .88rem;
-  color: rgba(255,255,255,.7);
-  font-weight: 500;
-}
-.footer-desc {
-  font-size: .88rem;
-  color: rgba(255,255,255,.55);
-  line-height: 1.7;
-  max-width: 440px;
-  margin-bottom: 0;
-}
-
-/* Boutons Réseaux Sociaux */
-.social-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  transition: all 0.25s ease;
-  text-decoration: none;
-}
-.social-btn:hover {
-  background: var(--lions-yellow);
-  color: var(--lions-blue-dark);
-  transform: translateY(-3px);
-  border-color: var(--lions-yellow);
-}
-.social-btn-wa:hover {
-  background: #25D366;
-  color: #fff;
-  border-color: #25D366;
-}
-
-/* Navigation & Titres Footer */
 .footer-section-title {
-  font-size: .75rem;
-  font-weight: 800;
+  font-size: .7rem;
+  font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--lions-yellow);
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
   padding-bottom: .5rem;
-  border-bottom: 1.5px solid rgba(255,255,255,.1);
-}
-
-.footer-nav-list li {
-  margin-bottom: .45rem;
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
 .footer-link {
-  font-size: .88rem;
-  color: rgba(255,255,255,.65);
-  transition: all 0.25s ease;
-  text-decoration: none;
-  display: inline-block;
-}
-.footer-link:hover {
-  color: var(--lions-yellow);
-  padding-left: .35rem;
-}
-
-/* Contact Items Footer */
-.footer-contact-item {
-  display: flex;
-  align-items: center;
-  gap: .65rem;
-  margin-bottom: .75rem;
-  font-size: .88rem;
-  color: rgba(255,255,255,.65);
-}
-.footer-contact-item a {
-  color: rgba(255,255,255,.7);
-  transition: color 0.25s ease;
+  display: block;
+  font-size: .85rem;
+  color: rgba(255,255,255,.5);
+  padding: .2rem 0;
+  transition: var(--transition);
   text-decoration: none;
 }
-.footer-contact-item a:hover {
-  color: var(--lions-yellow);
-}
-
-.footer-divider {
-  border-color: rgba(255,255,255,.12);
-  margin: 2.2rem 0 1.25rem;
-}
-
-.footer-legal {
-  font-size: .78rem;
-  color: rgba(255,255,255,.45);
-}
-.badge-district {
-  background: rgba(235, 183, 0, 0.15);
-  border: 1px solid rgba(235, 183, 0, 0.35);
-  color: var(--lions-yellow);
-  padding: .25rem .75rem;
-  border-radius: 50px;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .04em;
-}
+.footer-link:hover { color: var(--lions-yellow); padding-left: .4rem; }
+.footer-divider { border-color: rgba(255,255,255,.08); margin: 2rem 0 1.25rem; }
+.footer-legal { font-size: .76rem; color: rgba(255,255,255,.3); }
 
 /* ──────────────────────────────────────────────────────────────────────────────
    UTILITAIRES
