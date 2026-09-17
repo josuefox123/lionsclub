@@ -4,6 +4,8 @@
  * Présentation institutionnelle LEO Club Ortie & Lions Club Acacia
  */
 import { RouterLink } from 'vue-router';
+import logoAcacia from '../images/PARRAIN.png';
+import logoOrtie  from '../images/projet de fanion ortie2.png';
 </script>
 
 <template>
@@ -42,8 +44,13 @@ import { RouterLink } from 'vue-router';
                   <span style="font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.55);">Club Filleul</span>
                   <span style="font-size:.65rem; font-weight:700; background:rgba(235,183,0,.15); color:#EBB700; border:1px solid rgba(235,183,0,.4); border-radius:50px; padding:.22rem .7rem; white-space:nowrap;">12 – 30 ans</span>
                 </div>
-                <h2 style="font-size:1.4rem; font-weight:900; color:#fff; margin-top:.4rem; margin-bottom:.2rem; text-transform:uppercase;">LEO Club Abomey-Calavi Ortie</h2>
-                <p style="font-size:.78rem; color:#EBB700; margin:0; font-weight:500; text-transform:uppercase; letter-spacing:.05em;">Leadership · Expérience · Opportunité</p>
+                <div class="d-flex align-items-center gap-3 mt-2">
+                  <img :src="logoOrtie" alt="Fanion LEO Club Ortie" style="height:60px; width:auto; object-fit:contain; filter:drop-shadow(0 3px 8px rgba(0,0,0,.45)); flex-shrink:0;" />
+                  <div>
+                    <h2 style="font-size:1.4rem; font-weight:900; color:#fff; margin-bottom:.2rem; text-transform:uppercase;">LEO Club Abomey-Calavi Ortie</h2>
+                    <p style="font-size:.78rem; color:#EBB700; margin:0; font-weight:500; text-transform:uppercase; letter-spacing:.05em;">Leadership · Expérience · Opportunité</p>
+                  </div>
+                </div>
               </div>
               <div class="orientation-body">
                 <p style="font-size:.9rem; color:#6b7280; line-height:1.75; margin-bottom:1.5rem;">
@@ -67,8 +74,13 @@ import { RouterLink } from 'vue-router';
                   <span style="font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.55);">Club Parrain</span>
                   <span style="font-size:.65rem; font-weight:700; background:rgba(235,183,0,.15); color:#EBB700; border:1px solid rgba(235,183,0,.4); border-radius:50px; padding:.22rem .7rem; white-space:nowrap;">Professionnels</span>
                 </div>
-                <h2 style="font-size:1.4rem; font-weight:900; color:#fff; margin-top:.4rem; margin-bottom:.2rem; text-transform:uppercase;">Lions Club Abomey-Calavi Acacia</h2>
-                <p style="font-size:.78rem; color:#EBB700; margin:0; font-weight:500; text-transform:uppercase; letter-spacing:.05em;">Nous Servons · We Serve</p>
+                <div class="d-flex align-items-center gap-3 mt-2">
+                  <img :src="logoAcacia" alt="Fanion Lions Club Acacia" style="height:60px; width:auto; object-fit:contain; filter:drop-shadow(0 3px 8px rgba(0,0,0,.45)); flex-shrink:0;" />
+                  <div>
+                    <h2 style="font-size:1.4rem; font-weight:900; color:#fff; margin-bottom:.2rem; text-transform:uppercase;">Lions Club Abomey-Calavi Acacia</h2>
+                    <p style="font-size:.78rem; color:#EBB700; margin:0; font-weight:500; text-transform:uppercase; letter-spacing:.05em;">Nous Servons · We Serve</p>
+                  </div>
+                </div>
               </div>
               <div class="orientation-body">
                 <p style="font-size:.9rem; color:#6b7280; line-height:1.75; margin-bottom:1.5rem;">

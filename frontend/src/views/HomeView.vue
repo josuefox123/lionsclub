@@ -6,6 +6,8 @@
  */
 import { ref, onMounted, onUnmounted } from 'vue';
 import { RouterLink } from 'vue-router';
+import logoAcacia from '../images/PARRAIN.png';
+import logoOrtie  from '../images/projet de fanion ortie2.png';
 
 /* ─── CARROUSSEL ─────────────────────────────────────────────────────────── */
 const slides = [
@@ -178,10 +180,9 @@ const badgeClub = (c) => ({
 
             <!-- Cartes clubs superposées -->
             <div style="margin-top:-2rem; position:relative; z-index:3;">
+              <!-- Carte Lions Club Acacia -->
               <div style="background:rgba(0,35,112,.92); backdrop-filter:blur(16px); border:1px solid rgba(235,183,0,.3); border-radius:10px; padding:1.1rem 1.35rem; margin-bottom:.6rem; display:flex; align-items:center; gap:1rem;">
-                <div style="width:44px;height:44px;background:#EBB700;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                  <i class="bi bi-shield-check" style="color:#00338D; font-size:1.2rem;"></i>
-                </div>
+                <img :src="logoAcacia" alt="Fanion Lions Club Acacia" style="height:52px; width:auto; object-fit:contain; flex-shrink:0; filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));" />
                 <div>
                   <div style="font-weight:900; font-size:.95rem; color:#fff; text-transform:uppercase; letter-spacing:.03em;">Lions Club Acacia</div>
                   <div style="font-size:.73rem; color:rgba(255,255,255,.55);">Club Parrain &bull; Cadres &amp; Philanthropie</div>
@@ -189,10 +190,9 @@ const badgeClub = (c) => ({
                 <span style="margin-left:auto; font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#EBB700; border:1px solid rgba(235,183,0,.4); border-radius:50px; padding:.18rem .6rem; white-space:nowrap;">30+ ans</span>
               </div>
 
+              <!-- Carte LEO Club Ortie -->
               <div style="background:rgba(122,37,130,.88); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,.15); border-radius:10px; padding:1.1rem 1.35rem; display:flex; align-items:center; gap:1rem;">
-                <div style="width:44px;height:44px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                  <i class="bi bi-people-fill" style="color:#fff; font-size:1.2rem;"></i>
-                </div>
+                <img :src="logoOrtie" alt="Fanion LEO Club Ortie" style="height:52px; width:auto; object-fit:contain; flex-shrink:0; filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));" />
                 <div>
                   <div style="font-weight:900; font-size:.95rem; color:#fff; text-transform:uppercase; letter-spacing:.03em;">LEO Club Ortie</div>
                   <div style="font-size:.73rem; color:rgba(255,255,255,.55);">Club Filleul &bull; Leadership &amp; Jeunesse</div>

@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
+import logoAcacia from './images/PARRAIN.png';
+import logoOrtie  from './images/projet de fanion ortie2.png';
 
 /* ─── Comportement navbar au défilement ─────────────────────────────────── */
 const scrolled = ref(false);
@@ -67,8 +69,10 @@ onUnmounted(() => {
       <div class="container">
 
         <RouterLink class="navbar-brand" to="/">
-          <div class="brand-emblem">
-            <i class="bi bi-shield-fill"></i>
+          <!-- Logos des deux clubs côte à côte dans la navbar -->
+          <div class="d-flex align-items-center gap-2" style="flex-shrink:0;">
+            <img :src="logoOrtie"  alt="Logo LEO Club Ortie"  style="height:44px; width:auto; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));" />
+            <img :src="logoAcacia" alt="Logo Lions Club Acacia" style="height:44px; width:auto; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));" />
           </div>
           <div class="brand-label">
             <div class="brand-title">Lions Acacia &amp; LEO Ortie</div>
@@ -113,9 +117,9 @@ onUnmounted(() => {
 
           <div class="col-12 col-lg-4">
             <div class="d-flex align-items-center gap-3 mb-3">
-              <div class="brand-emblem" style="width:42px;height:42px;flex-shrink:0;">
-                <i class="bi bi-shield-fill" style="font-size:1.1rem;"></i>
-              </div>
+              <!-- Vrais logos des clubs dans le footer -->
+              <img :src="logoOrtie"  alt="LEO Club Ortie"   style="height:48px; width:auto; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.5)); flex-shrink:0;" />
+              <img :src="logoAcacia" alt="Lions Club Acacia" style="height:48px; width:auto; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.5)); flex-shrink:0;" />
               <div>
                 <div class="footer-brand-name">Lions Club Acacia</div>
                 <div class="footer-brand-name" style="color:rgba(255,255,255,.65); font-weight:400;">LEO Club Ortie</div>
