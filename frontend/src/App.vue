@@ -191,63 +191,74 @@ onUnmounted(() => {
     </main>
 
     <!-- ═══════════════════════════════════════════
-         FOOTER OFFICIEL
+         FOOTER OFFICIEL — Structure Réorganisée & Ultra-Responsive
     ═══════════════════════════════════════════ -->
     <footer class="footer-official">
       <div class="container">
-        <div class="row g-5">
+        <div class="row g-4 g-lg-5">
 
-          <div class="col-12 col-lg-4">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <!-- Vrais logos des clubs dans le footer -->
-              <img :src="logoOrtie"  alt="LEO Club Ortie"   style="height:48px; width:auto; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.5)); flex-shrink:0;" />
-              <img :src="logoAcacia" alt="Lions Club Acacia" style="height:48px; width:auto; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.5)); flex-shrink:0;" />
-              <div>
+          <!-- Colonne 1 : Logos & Présentation Alliance -->
+          <div class="col-12 col-lg-5 text-center text-lg-start">
+            <div class="d-inline-flex d-lg-flex align-items-center justify-content-center justify-content-lg-start gap-3 mb-3">
+              <!-- Vrais logos des deux clubs -->
+              <img :src="logoOrtie"  alt="LEO Club Ortie"   style="height:50px; width:auto; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.5)); flex-shrink:0;" />
+              <img :src="logoAcacia" alt="Lions Club Acacia" style="height:50px; width:auto; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.5)); flex-shrink:0;" />
+              <div class="text-start">
                 <div class="footer-brand-name">Lions Club Acacia</div>
-                <div class="footer-brand-name" style="color:rgba(255,255,255,.65); font-weight:400;">LEO Club Ortie</div>
+                <div class="footer-brand-sub">LEO Club Ortie</div>
               </div>
             </div>
-            <p style="font-size:.85rem; color:rgba(255,255,255,.4); line-height:1.7; margin-bottom:1.2rem;">
-              Alliance institutionnelle de service communautaire au Bénin. District 403 A4 du Lions Clubs International — dédiée à l'action humanitaire et au développement du leadership des jeunes.
+            <p class="footer-desc mx-auto mx-lg-0">
+              Alliance institutionnelle de service communautaire au Bénin — District 403 A4 du Lions Clubs International. Dédiée à l'action humanitaire et au développement du leadership des jeunes.
             </p>
-            <div class="d-flex gap-3">
-              <a href="#" aria-label="Facebook" class="footer-link" style="display:inline;padding:0;"><i class="bi bi-facebook fs-5"></i></a>
-              <a href="#" aria-label="Instagram" class="footer-link" style="display:inline;padding:0;"><i class="bi bi-instagram fs-5"></i></a>
-              <a href="https://wa.me/2290100000000" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer-link" style="display:inline;padding:0;color:#25D366;"><i class="bi bi-whatsapp fs-5"></i></a>
+            <!-- Réseaux sociaux -->
+            <div class="d-flex justify-content-center justify-content-lg-start gap-3 mt-3">
+              <a href="#" aria-label="Facebook" class="social-btn"><i class="bi bi-facebook"></i></a>
+              <a href="#" aria-label="Instagram" class="social-btn"><i class="bi bi-instagram"></i></a>
+              <a href="https://wa.me/2290100000000" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-btn social-btn-wa"><i class="bi bi-whatsapp"></i></a>
             </div>
           </div>
 
-          <div class="col-6 col-lg-3">
-            <div class="footer-section-title">Navigation</div>
-            <RouterLink class="footer-link" to="/">Accueil</RouterLink>
-            <RouterLink class="footer-link" to="/a-propos">À Propos des Clubs</RouterLink>
-            <RouterLink class="footer-link" to="/actions">Galerie d'Actions</RouterLink>
-            <RouterLink class="footer-link" to="/adhesion">Formulaire d'Adhésion</RouterLink>
-            <RouterLink class="footer-link" to="/contact">Contact &amp; Secrétariat</RouterLink>
+          <!-- Colonne 2 : Liens de Navigation -->
+          <div class="col-12 col-sm-6 col-lg-3 text-center text-sm-start">
+            <div class="footer-section-title">Navigation Rapide</div>
+            <ul class="list-unstyled footer-nav-list mb-0">
+              <li><RouterLink class="footer-link" to="/"><i class="bi bi-chevron-right me-1 small opacity-50"></i>Accueil</RouterLink></li>
+              <li><RouterLink class="footer-link" to="/a-propos"><i class="bi bi-chevron-right me-1 small opacity-50"></i>À Propos des Clubs</RouterLink></li>
+              <li><RouterLink class="footer-link" to="/actions"><i class="bi bi-chevron-right me-1 small opacity-50"></i>Galerie d'Actions</RouterLink></li>
+              <li><RouterLink class="footer-link" to="/adhesion"><i class="bi bi-chevron-right me-1 small opacity-50"></i>Formulaire d'Adhésion</RouterLink></li>
+              <li><RouterLink class="footer-link" to="/contact"><i class="bi bi-chevron-right me-1 small opacity-50"></i>Contact &amp; Secrétariat</RouterLink></li>
+            </ul>
           </div>
 
-          <div class="col-6 col-lg-5">
+          <!-- Colonne 3 : Secrétariat Officiel & Contact -->
+          <div class="col-12 col-sm-6 col-lg-4 text-center text-sm-start">
             <div class="footer-section-title">Secrétariat Officiel</div>
-            <div class="d-flex align-items-start gap-2 mb-2" style="font-size:.85rem; color:rgba(255,255,255,.5);">
-              <i class="bi bi-geo-alt-fill" style="color:#EBB700; flex-shrink:0; margin-top:.1rem;"></i>
-              <span>Commune d'Abomey-Calavi, République du Bénin</span>
+            <div class="footer-contact-item justify-content-center justify-content-sm-start">
+              <i class="bi bi-geo-alt-fill text-warning"></i>
+              <span>Abomey-Calavi, République du Bénin</span>
             </div>
-            <div class="d-flex align-items-center gap-2 mb-2" style="font-size:.85rem; color:rgba(255,255,255,.5);">
-              <i class="bi bi-envelope-fill" style="color:#EBB700;"></i>
-              <span>contact@lions-leo-abomeycalavi.org</span>
+            <div class="footer-contact-item justify-content-center justify-content-sm-start">
+              <i class="bi bi-envelope-fill text-warning"></i>
+              <a href="mailto:contact@lions-leo-abomeycalavi.org">contact@lions-leo-abomeycalavi.org</a>
             </div>
-            <div class="d-flex align-items-center gap-2" style="font-size:.85rem; color:rgba(255,255,255,.5);">
-              <i class="bi bi-telephone-fill" style="color:#EBB700;"></i>
-              <span>+229 01 00 00 00 00</span>
+            <div class="footer-contact-item justify-content-center justify-content-sm-start">
+              <i class="bi bi-telephone-fill text-warning"></i>
+              <a href="tel:+2290100000000">+229 01 00 00 00 00</a>
+            </div>
+            <div class="mt-3">
+              <RouterLink to="/adhesion" class="btn-yellow w-100 text-center" style="font-size: .85rem; padding: .65rem 1rem;">
+                <i class="bi bi-person-plus-fill me-1"></i> Rejoindre l'Alliance
+              </RouterLink>
             </div>
           </div>
 
         </div>
 
         <hr class="footer-divider" />
-        <div class="d-flex flex-column flex-md-row justify-content-between gap-2 footer-legal">
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-2 text-center text-md-start footer-legal">
           <span>© 2026 Lions Club Abomey-Calavi Acacia &amp; LEO Club Abomey-Calavi Ortie. Tous droits réservés.</span>
-          <span>District 403 A4 &bull; Lions Clubs International</span>
+          <span class="badge-district">District 403 A4 &bull; Lions Clubs International</span>
         </div>
 
       </div>
