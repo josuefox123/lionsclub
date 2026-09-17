@@ -700,7 +700,7 @@ img { max-width: 100%; display: block; }
    PAGE HEADER
    ────────────────────────────────────────────────────────────────────────────── */
 .page-header {
-  background: linear-gradient(135deg, #001848 0%, #00338D 45%, #7A2582 100%);
+  background: linear-gradient(135deg, var(--lions-blue-dark) 0%, var(--lions-blue) 100%);
   padding: 4rem 0 5rem;
   position: relative;
   overflow: hidden;
@@ -947,7 +947,7 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
 }
 .form-header {
-  background: linear-gradient(135deg, #001848 0%, #00338D 45%, #7A2582 100%);
+  background: var(--lions-blue);
   padding: 2.5rem 2rem;
   border-bottom: 5px solid var(--lions-yellow);
 }
@@ -1054,7 +1054,7 @@ img { max-width: 100%; display: block; }
    SECTION VIOLETTE (CTA STRIP)
    ────────────────────────────────────────────────────────────────────────────── */
 .purple-strip {
-  background: linear-gradient(135deg, #001848 0%, #00338D 45%, #7A2582 100%);
+  background: linear-gradient(135deg, var(--lions-blue-dark), var(--lions-purple));
   position: relative;
   overflow: hidden;
 }
@@ -1066,21 +1066,12 @@ img { max-width: 100%; display: block; }
 }
 
 /* ──────────────────────────────────────────────────────────────────────────────
-   FOOTER OFFICIEL — DÉGRADÉ SIGNATURE LIONS & LEO
+   FOOTER
    ────────────────────────────────────────────────────────────────────────────── */
 .footer-official {
-  background: linear-gradient(135deg, #001848 0%, #00338D 42%, #7A2582 100%);
+  background: var(--lions-blue-dark);
   border-top: 4px solid var(--lions-yellow);
   padding: 3.5rem 0 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-.footer-official::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-  pointer-events: none;
 }
 .footer-brand-name {
   font-size: 1rem;
