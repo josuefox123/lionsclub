@@ -1,0 +1,90 @@
+/* Design System - LEO Club Ortie & Lions Club Acacia */
+:root {
+  --lions-gold: #f4c430;
+  --lions-gold-hover: #d4a317;
+  --lions-navy: #002d62;
+  --leo-maroon: #800020;
+  --ortie-emerald: #0f766e;
+  --ortie-light-green: #ccfbf1;
+  --dark-bg: #0b1329;
+  --card-bg: #132247;
+  --text-main: #1e293b;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #f8fafc;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Gradients Institutionnels */
+.bg-gradient-lions {
+  background: linear-gradient(135deg, #002d62 0%, #0b1329 100%);
+}
+
+.bg-gradient-leo {
+  background: linear-gradient(135deg, #0f766e 0%, #042f2e 100%);
+}
+
+.bg-gradient-hero {
+  background: linear-gradient(135deg, #051937 0%, #004d7a 50%, #008793 100%);
+}
+
+.text-gold {
+  color: var(--lions-gold) !important;
+}
+
+.btn-gold {
+  background-color: var(--lions-gold);
+  color: #002d62;
+  font-weight: 700;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+  background-color: var(--lions-gold-hover);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(244, 196, 48, 0.3);
+}
+
+.btn-whatsapp {
+  background-color: #25d366;
+  color: #ffffff;
+  font-weight: 700;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1eb857;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Animations et Micro-Interactions */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Custom Badges */
+.badge-axe {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4em 0.8em;
+  border-radius: 50rem;
+}
