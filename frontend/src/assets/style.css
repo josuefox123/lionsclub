@@ -547,7 +547,7 @@ img { max-width: 100%; display: block; }
    ────────────────────────────────────────────────────────────────────────────── */
 .hero {
   background: linear-gradient(135deg, var(--lions-blue-dark) 0%, var(--lions-blue) 100%);
-  min-height: 90vh;
+  min-height: 85vh;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -558,9 +558,15 @@ img { max-width: 100%; display: block; }
 @media (max-width: 991px) { 
   .hero { 
     min-height: auto; 
-    padding-top: 7rem; 
-    padding-bottom: 3rem;
+    padding-top: 4.5rem; 
+    padding-bottom: 2rem;
   } 
+}
+@media (max-width: 575px) { 
+  .hero { 
+    padding-top: 4rem; 
+    padding-bottom: 1.5rem;
+  }
 }
 
 .hero-slide {
@@ -593,6 +599,21 @@ img { max-width: 100%; display: block; }
   .hero-text-card {
     padding: 0 !important;
     background: transparent !important;
+  }
+  .hero-text-card h1 {
+    font-size: 1.65rem !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.25 !important;
+  }
+  .hero-text-card p {
+    font-size: 0.9rem !important;
+    margin-bottom: 1.25rem !important;
+    line-height: 1.55 !important;
+  }
+  .hero-text-card .btn-yellow,
+  .hero-text-card .btn-outline-white {
+    padding: 0.65rem 1.25rem !important;
+    font-size: 0.85rem !important;
   }
 }
 

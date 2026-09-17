@@ -178,8 +178,8 @@ const badgeClub = (c) => ({
         <div class="hero-overlay"></div>
       </div>
 
-      <!-- Contenu hero (centré & aéré sans encombrement) -->
-      <div class="container position-relative py-5" style="z-index:2;">
+      <!-- Contenu hero (centré & compact en mobile) -->
+      <div class="container position-relative py-3 py-md-5" style="z-index:2;">
         <div class="row align-items-center justify-content-center">
 
           <!-- Colonne Principale — Texte du carrousel -->
