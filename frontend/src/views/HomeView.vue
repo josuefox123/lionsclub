@@ -229,27 +229,6 @@ const badgeClub = (c) => ({
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         STAT STRIP ANIMÉ — Bande jaune avec compteurs dynamiques
-    ═══════════════════════════════════════════════════════════════ -->
-    <div class="stat-strip" ref="statsSectionRef">
-      <div class="container">
-        <div class="row g-3 g-md-4 text-center">
-          <div v-for="stat in stats" :key="stat.id" class="col-6 col-md-3">
-            <div class="stat-card">
-              <div class="stat-icon-wrapper">
-                <i :class="['bi', stat.icon]"></i>
-              </div>
-              <div class="stat-item">
-                <div class="stat-num">{{ stat.current }}{{ stat.suffix }}</div>
-                <div class="stat-label">{{ stat.label }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════════════
          DOMAINES D'ACTION — Grille 6 causes (structure Hopenest)
     ═══════════════════════════════════════════════════════════════ -->
     <section class="py-5 bg-off-white">
@@ -389,6 +368,27 @@ const badgeClub = (c) => ({
 
       </div>
     </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         STAT STRIP ANIMÉ — Bande jaune avec compteurs dynamiques
+    ═══════════════════════════════════════════════════════════════ -->
+    <div class="stat-strip" ref="statsSectionRef">
+      <div class="container">
+        <div class="row g-3 g-md-4 text-center">
+          <div v-for="stat in stats" :key="stat.id" class="col-6 col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon-wrapper">
+                <i :class="['bi', stat.icon]"></i>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">{{ stat.current }}{{ stat.suffix }}</div>
+                <div class="stat-label">{{ stat.label }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ═══════════════════════════════════════════════════════════════
          CTA STRIP — Section violette avec angle (Hopenest-inspired)
