@@ -1,15 +1,22 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import { RouterLink, RouterView } from 'vue-router';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
+import { RouterLink, RouterView, useRoute } from 'vue-router';
 import logoAcacia from './images/PARRAIN.png';
 import logoOrtie  from './images/projet de fanion ortie2.png';
 
-/* ─── Comportement navbar au défilement ─────────────────────────────────── */
+/* ─── État Navbar & Offcanvas Mobile ────────────────────────────────────── */
 const scrolled = ref(false);
+const drawerOpen = ref(false);
+const route = useRoute();
 
 const handleScroll = () => {
   scrolled.value = window.scrollY > 60;
 };
+
+// Fermeture automatique du tiroir au changement de page
+watch(() => route.path, () => {
+  drawerOpen.value = false;
+});
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true });
@@ -62,13 +69,13 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- NAVBAR PRINCIPALE -->
+    <!-- NAVBAR PRINCIPALE (Desktop & Header Mobile) -->
     <nav class="navbar navbar-expand-lg navbar-official"
       :class="{ 'navbar-official--scrolled': scrolled }"
     >
-      <div class="container">
+      <div class="container d-flex align-items-center justify-content-between">
 
-        <RouterLink class="navbar-brand" to="/">
+        <RouterLink class="navbar-brand me-auto" to="/">
           <!-- Logos des deux clubs côte à côte dans la navbar -->
           <div class="d-flex align-items-center gap-2" style="flex-shrink:0;">
             <img :src="logoOrtie"  alt="Logo LEO Club Ortie"  style="height:44px; width:auto; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));" />
@@ -80,14 +87,9 @@ onUnmounted(() => {
           </div>
         </RouterLink>
 
-        <button class="navbar-toggler border-0 text-white shadow-none"
-          type="button" data-bs-toggle="collapse" data-bs-target="#navOfficial"
-          aria-controls="navOfficial" aria-expanded="false">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navOfficial">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-0 py-3 py-lg-0">
+        <!-- Navigation Desktop uniquement -->
+        <div class="collapse navbar-collapse d-none d-lg-block" id="navOfficial">
+          <ul class="navbar-nav ms-auto align-items-center gap-1">
             <li class="nav-item"><RouterLink class="nav-link-official nav-link" to="/">Accueil</RouterLink></li>
             <li class="nav-item"><RouterLink class="nav-link-official nav-link" to="/a-propos">À Propos</RouterLink></li>
             <li class="nav-item"><RouterLink class="nav-link-official nav-link" to="/actions">Nos Actions</RouterLink></li>
@@ -95,10 +97,92 @@ onUnmounted(() => {
           </ul>
         </div>
 
+        <!-- Bouton Trigger Menu Mobile (Style Cheeseburger / Oreo) -->
+        <button
+          class="drawer-trigger-btn d-lg-none"
+          @click="drawerOpen = !drawerOpen"
+          aria-label="Ouvrir le menu"
+        >
+          <div class="menu-icon-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+
       </div>
     </nav>
 
     </div><!-- /.fixed-header -->
+
+    <!-- ═══════════════════════════════════════════
+         DRAWER OFF-CANVAS DROIT MOBILE
+         · Ouverture fluide en longueur sur la droite
+    ═══════════════════════════════════════════ -->
+    <div
+      class="drawer-backdrop"
+      :class="{ 'show': drawerOpen }"
+      @click="drawerOpen = false"
+    ></div>
+
+    <aside class="mobile-right-drawer" :class="{ 'open': drawerOpen }">
+      <!-- En-tête du Drawer -->
+      <div class="drawer-header d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2">
+          <img :src="logoOrtie" alt="LEO Club Ortie" style="height:36px; width:auto;" />
+          <img :src="logoAcacia" alt="Lions Club Acacia" style="height:36px; width:auto;" />
+          <span class="fw-bold text-white fs-6 ms-1">Menu</span>
+        </div>
+        <button class="btn-close-drawer" @click="drawerOpen = false" aria-label="Fermer le menu">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <!-- Liens de navigation du Drawer -->
+      <div class="drawer-body">
+        <div class="drawer-nav">
+          <RouterLink to="/" class="drawer-link" exact-active-class="active">
+            <i class="bi bi-house-door-fill"></i>
+            <span>Accueil</span>
+          </RouterLink>
+
+          <RouterLink to="/a-propos" class="drawer-link" active-class="active">
+            <i class="bi bi-info-circle-fill"></i>
+            <span>À Propos des Clubs</span>
+          </RouterLink>
+
+          <RouterLink to="/actions" class="drawer-link" active-class="active">
+            <i class="bi bi-grid-fill"></i>
+            <span>Galerie d'Actions</span>
+          </RouterLink>
+
+          <RouterLink to="/contact" class="drawer-link" active-class="active">
+            <i class="bi bi-envelope-fill"></i>
+            <span>Contact &amp; Secrétariat</span>
+          </RouterLink>
+        </div>
+
+        <!-- Section CTA du Drawer -->
+        <div class="drawer-footer mt-auto pt-4">
+          <RouterLink to="/adhesion" class="btn-drawer-cta">
+            <i class="bi bi-person-plus-fill me-2"></i>
+            Rejoindre l'Alliance
+          </RouterLink>
+
+          <!-- Informations rapides -->
+          <div class="mt-4 pt-3 border-top border-white border-opacity-10 text-white-50 small">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-geo-alt-fill text-warning"></i>
+              <span>Abomey-Calavi, Bénin</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-telephone-fill text-warning"></i>
+              <span>+229 01 00 00 00 00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
 
     <!-- Espaceur compensant la hauteur de la barre fixe -->
     <div class="fixed-header-spacer"></div>
