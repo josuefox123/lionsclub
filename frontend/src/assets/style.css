@@ -596,6 +596,35 @@ img { max-width: 100%; display: block; }
   transition: var(--transition);
 }
 .cause-tile:hover .cause-icon { background: var(--lions-blue); color: var(--white); }
+
+.cause-icon-img {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: #f0f4fc;
+  border: 2px solid rgba(0, 51, 141, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.1rem;
+  padding: 12px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0,51,141,0.06);
+}
+.cause-tile:hover .cause-icon-img {
+  background: var(--lions-blue);
+  border-color: var(--lions-yellow);
+  transform: scale(1.12) rotate(4deg);
+  box-shadow: 0 8px 24px rgba(0,51,141,0.25);
+}
+.cause-icon-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter 0.35s ease;
+}
+.cause-tile:hover .cause-icon-img img {
+  filter: brightness(0) invert(1);
+}
 .cause-tile h6 {
   font-size: .88rem;
   font-weight: 700;

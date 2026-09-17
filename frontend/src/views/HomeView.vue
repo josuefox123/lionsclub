@@ -9,6 +9,14 @@ import { RouterLink } from 'vue-router';
 import logoAcacia from '../images/PARRAIN.png';
 import logoOrtie  from '../images/projet de fanion ortie2.png';
 
+/* ─── ICÔNES OFFICIELLES CAUSES LCI ─────────────────────────────────────── */
+import iconVision      from '../images/LCI_CauseArea_Icons_01a-vision.png';
+import iconDiabetes    from '../images/LCI_CauseArea_Icons_01a-diabetes.png';
+import iconHunger      from '../images/LCI_CauseArea_Icons_01a-hunger.png';
+import iconEnvironment from '../images/LCI_CauseArea_Icons_01a-environment.png';
+import iconCancer      from '../images/LCI_CauseArea_Icons_01a-childhoodcancer.png';
+import iconYouth       from '../images/LCIF Icon - Youth.png';
+
 /* ─── CARROUSSEL ─────────────────────────────────────────────────────────── */
 const slides = [
   {
@@ -98,14 +106,14 @@ onMounted(() => {
 
 onUnmounted(() => { if (timer) clearInterval(timer); });
 
-/* ─── DOMAINES D'ACTION ──────────────────────────────────────────────────── */
+/* ─── DOMAINES D'ACTION OFFICIELS LCI ───────────────────────────────────── */
 const domaines = [
-  { icon: 'bi-eye-fill',         label: 'Vision', desc: 'Prévention de la cécité évitable' },
-  { icon: 'bi-heart-pulse-fill', label: 'Santé',  desc: 'Dépistage et soins communautaires' },
-  { icon: 'bi-tree-fill',        label: 'Env.',    desc: 'Reboisement et éco-citoyenneté' },
-  { icon: 'bi-box-seam-fill',    label: 'Faim',   desc: 'Assistance alimentaire et nutrition' },
-  { icon: 'bi-book-fill',        label: 'Éduc.',  desc: 'Soutien scolaire et alphabétisation' },
-  { icon: 'bi-mortarboard-fill', label: 'Jeunesse', desc: 'Leadership et développement des jeunes' }
+  { img: iconVision,      label: 'Vision',           desc: 'Prévention de la cécité et examens de vue' },
+  { img: iconDiabetes,    label: 'Diabète',          desc: 'Dépistage, prévention et sensibilisation' },
+  { img: iconHunger,      label: 'Lutte contre la Faim', desc: 'Sécurité alimentaire et distributions' },
+  { img: iconEnvironment, label: 'Environnement',   desc: 'Reboisement et protection écologique' },
+  { img: iconCancer,      label: 'Cancer Infantile', desc: 'Soutien aux enfants touchés et aux familles' },
+  { img: iconYouth,       label: 'Jeunesse',         desc: 'Leadership, éducation et LEO Clubs' }
 ];
 
 /* ─── ACTIONS DE DÉMONSTRATION ───────────────────────────────────────────── */
@@ -248,7 +256,9 @@ const badgeClub = (c) => ({
         <div class="row g-3 g-lg-4">
           <div v-for="(d, i) in domaines" :key="i" class="col-6 col-md-4 col-lg-2">
             <div class="cause-tile h-100">
-              <div class="cause-icon"><i :class="['bi', d.icon]"></i></div>
+              <div class="cause-icon-img">
+                <img :src="d.img" :alt="d.label" loading="lazy" />
+              </div>
               <h6>{{ d.label }}</h6>
               <p>{{ d.desc }}</p>
             </div>
