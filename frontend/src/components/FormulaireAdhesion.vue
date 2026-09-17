@@ -160,9 +160,9 @@ const ouvrirWhatsApp = () => {
           
           <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
             <!-- En-tête de la carte -->
-            <div class="card-header bg-gradient-lions text-white text-center p-4 p-md-5">
-              <span class="badge bg-warning text-dark text-uppercase px-3 py-2 mb-2 rounded-pill fw-bold">Rejoignez-nous</span>
-              <h2 class="fw-bold mb-2 text-white">Formulaire d'Adhésion / Contact</h2>
+            <div class="card-header bg-lions-navy text-white text-center p-4 p-md-5">
+              <span class="badge bg-lions-gold text-white text-uppercase px-3 py-2 mb-2 rounded-pill fw-bold">Commission des Effectifs</span>
+              <h2 class="fw-bold mb-2 text-white">Formulaire d'Adhésion Officiel</h2>
               <p class="mb-0 opacity-75 fs-6">
                 Faites le premier pas pour servir la communauté aux côtés du LEO Club Ortie et du Lions Club Acacia (Bénin).
               </p>
@@ -350,7 +350,7 @@ const ouvrirWhatsApp = () => {
                   <div class="col-12 mt-4">
                     <button
                       type="submit"
-                      class="btn btn-gold btn-lg w-100 py-3 shadow fs-5"
+                      class="btn btn-lions-gold btn-lg w-100 py-3 shadow fs-5"
                       :disabled="enChargement"
                     >
                       <span v-if="enChargement" class="spinner-border spinner-border-sm me-2" role="status"></span>

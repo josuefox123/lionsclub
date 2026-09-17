@@ -115,7 +115,7 @@ const formaterDate = (dateStr) => {
                 :key="axe"
                 @click="axeFiltre = axe"
                 class="btn btn-sm rounded-pill px-3 py-2 fw-semibold transition-all"
-                :class="axeFiltre === axe ? 'btn-primary shadow-sm' : 'btn-outline-secondary'"
+                :class="axeFiltre === axe ? 'btn-lions-navy shadow-sm' : 'btn-outline-secondary'"
               >
                 {{ axe === 'TOUT' ? 'Toutes les catégories' : axe }}
               </button>

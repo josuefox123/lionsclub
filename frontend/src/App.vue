@@ -1,116 +1,118 @@
 <script setup>
-import HeroSection from './components/HeroSection.vue';
-import OrientationSection from './components/OrientationSection.vue';
-import GalerieActions from './components/GalerieActions.vue';
-import FormulaireAdhesion from './components/FormulaireAdhesion.vue';
-
-const scrollToSection = (id) => {
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth' });
-  }
-};
+import { RouterLink, RouterView } from 'vue-router';
 </script>
 
 <template>
   <div class="min-vh-100 d-flex flex-column bg-light">
     
-    <!-- BARRE DE NAVIGATION (MOBILE-FIRST) -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-lions sticky-top shadow-sm py-3">
-      <div class="container">
-        
-        <!-- Logo / Titre Institutionnel -->
-        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#">
-          <div class="bg-warning text-dark rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-            <i class="bi bi-shield-fill-check fs-5"></i>
-          </div>
-          <div class="d-flex flex-column leading-tight">
-            <span class="fs-6 text-white fw-bold">LEO Ortie & Lions Acacia</span>
-            <small class="text-gold opacity-90" style="font-size: 0.72rem;">Abomey-Calavi • Bénin</small>
-          </div>
-        </a>
-
-        <!-- Bouton Burger Mobile -->
-        <button
-          class="navbar-toggler border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarContenu"
-          aria-controls="navbarContenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Liens de Navigation -->
-        <div class="collapse navbar-collapse" id="navbarContenu">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-3">
-            <li class="nav-item">
-              <a class="nav-link text-white active" href="#">Accueil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white-50" href="#orientation" @click.prevent="scrollToSection('orientation')">Orientation</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white-50" href="#galerie-actions" @click.prevent="scrollToSection('galerie-actions')">Nos Actions</a>
-            </li>
-            <li class="nav-item mt-2 mt-lg-0">
-              <a class="btn btn-gold btn-sm px-3 py-2 rounded-pill fw-bold" href="#formulaire-adhesion" @click.prevent="scrollToSection('formulaire-adhesion')">
-                <i class="bi bi-person-plus-fill me-1"></i> Rejoindre
-              </a>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </nav>
-
-    <!-- MAIN CONTENT SECTIONS -->
-    <main class="flex-grow-1">
-      <HeroSection />
+    <!-- BARRE DE NAVIGATION MULTI-PAGE INSTITUTIONNELLE -->
+    <header class="sticky-top shadow-sm">
       
-      <div id="orientation">
-        <OrientationSection />
+      <!-- Bandeau Supérieur District -->
+      <div class="bg-lions-navy-dark text-white py-1 fs-7">
+        <div class="container d-flex justify-content-between align-items-center">
+          <div class="small text-white-50">
+            <i class="bi bi-shield-check text-lions-gold me-1"></i> Lions Clubs International • District 403 A4 (Bénin)
+          </div>
+          <div class="small d-none d-md-block text-white-50">
+            Abomey-Calavi • Alliance Acacia & Ortie
+          </div>
+        </div>
       </div>
 
-      <GalerieActions />
+      <!-- Navigation Principale -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-lions-navy py-3">
+        <div class="container">
+          
+          <!-- Logo Institutionnel -->
+          <RouterLink class="navbar-brand d-flex align-items-center gap-3" to="/">
+            <div class="bg-lions-gold text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+              <i class="bi bi-award-fill fs-5"></i>
+            </div>
+            <div class="d-flex flex-column leading-tight">
+              <span class="fs-6 text-white fw-bold">Lions Acacia & LEO Ortie</span>
+              <small class="text-lions-gold" style="font-size: 0.75rem;">Abomey-Calavi • Bénin</small>
+            </div>
+          </RouterLink>
 
-      <FormulaireAdhesion />
+          <!-- Bouton Burger Mobile -->
+          <button
+            class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarPublic"
+            aria-controls="navbarPublic"
+            aria-expanded="false"
+            aria-label="Basculer la navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Menu de Navigation Multi-Page -->
+          <div class="collapse navbar-collapse" id="navbarPublic">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1">
+              <li class="nav-item">
+                <RouterLink class="nav-link nav-link-custom" to="/">Accueil</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link nav-link-custom" to="/a-propos">À Propos</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link nav-link-custom" to="/actions">Nos Actions</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link nav-link-custom" to="/contact">Contact</RouterLink>
+              </li>
+              <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                <RouterLink class="btn btn-lions-gold btn-sm px-4 py-2 rounded-3 text-white fw-semibold" to="/adhesion">
+                  <i class="bi bi-person-plus-fill me-1"></i> Rejoindre le Club
+                </RouterLink>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <!-- ROUTER VIEW (PAGE CONTENU DYNAMIQUE) -->
+    <main class="flex-grow-1">
+      <RouterView />
     </main>
 
-    <!-- PIED DE PAGE (FOOTER INSTITUTIONNEL) -->
-    <footer class="bg-gradient-lions text-white py-5 mt-auto border-top border-warning border-4">
+    <!-- PIED DE PAGE INSTITUTIONNEL -->
+    <footer class="bg-lions-gradient text-white py-5 mt-auto border-top border-warning border-3">
       <div class="container">
         <div class="row g-4 justify-content-between">
           
           <div class="col-12 col-md-5">
-            <h5 class="fw-bold text-gold mb-3">LEO Club Ortie & Lions Club Acacia</h5>
-            <p class="text-white-50 small mb-3">
+            <h5 class="fw-bold text-lions-gold mb-3">Lions Club Acacia & LEO Club Ortie</h5>
+            <p class="text-white-50 small mb-3 leading-relaxed">
               Clubs de service engagés pour le bien-être des populations d'Abomey-Calavi et du Bénin. Membres du District 403 A4 du Lions Clubs International.
             </p>
             <div class="d-flex gap-3 fs-5">
-              <a href="#" class="text-white-50 hover-text-gold"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="text-white-50 hover-text-gold"><i class="bi bi-instagram"></i></a>
-              <a href="https://wa.me/2290100000000" target="_blank" class="text-success"><i class="bi bi-whatsapp"></i></a>
+              <a href="#" class="text-white-50 hover-text-gold" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="text-white-50 hover-text-gold" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://wa.me/2290100000000" target="_blank" class="text-success" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
             </div>
           </div>
 
           <div class="col-12 col-md-3">
-            <h6 class="fw-bold text-white mb-3">Liens Rapides</h6>
+            <h6 class="fw-bold text-white mb-3">Navigation</h6>
             <ul class="list-unstyled small space-y-2 text-white-50">
-              <li><a href="#" class="text-white-50 text-decoration-none">Présentation</a></li>
-              <li><a href="#orientation" @click.prevent="scrollToSection('orientation')" class="text-white-50 text-decoration-none">Orientation LEO vs Lions</a></li>
-              <li><a href="#galerie-actions" @click.prevent="scrollToSection('galerie-actions')" class="text-white-50 text-decoration-none">Galerie d'actions</a></li>
-              <li><a href="#formulaire-adhesion" @click.prevent="scrollToSection('formulaire-adhesion')" class="text-white-50 text-decoration-none">Adhésion / Contact</a></li>
+              <li class="mb-1"><RouterLink to="/" class="text-white-50 text-decoration-none">Accueil</RouterLink></li>
+              <li class="mb-1"><RouterLink to="/a-propos" class="text-white-50 text-decoration-none">À Propos de nos Clubs</RouterLink></li>
+              <li class="mb-1"><RouterLink to="/actions" class="text-white-50 text-decoration-none">Galerie des Actions</RouterLink></li>
+              <li class="mb-1"><RouterLink to="/adhesion" class="text-white-50 text-decoration-none">Formulaire d'Adhésion</RouterLink></li>
+              <li class="mb-1"><RouterLink to="/contact" class="text-white-50 text-decoration-none">Contact & Secrétariat</RouterLink></li>
             </ul>
           </div>
 
           <div class="col-12 col-md-4">
-            <h6 class="fw-bold text-white mb-3">Contact & Localisation</h6>
-            <p class="small text-white-50 mb-1"><i class="bi bi-geo-alt-fill text-gold me-2"></i> Abomey-Calavi, République du Bénin</p>
-            <p class="small text-white-50 mb-1"><i class="bi bi-envelope-fill text-gold me-2"></i> contact@lions-leo-abomeycalavi.org</p>
-            <p class="small text-white-50 mb-0"><i class="bi bi-telephone-fill text-gold me-2"></i> +229 01 00 00 00 00</p>
+            <h6 class="fw-bold text-white mb-3">Contact & Secrétariat</h6>
+            <p class="small text-white-50 mb-2"><i class="bi bi-geo-alt-fill text-lions-gold me-2"></i> Abomey-Calavi, République du Bénin</p>
+            <p class="small text-white-50 mb-2"><i class="bi bi-envelope-fill text-lions-gold me-2"></i> contact@lions-leo-abomeycalavi.org</p>
+            <p class="small text-white-50 mb-0"><i class="bi bi-telephone-fill text-lions-gold me-2"></i> +229 01 00 00 00 00</p>
           </div>
 
         </div>
@@ -119,10 +121,10 @@ const scrollToSection = (id) => {
 
         <div class="row align-items-center text-center text-md-start small text-white-50">
           <div class="col-md-6">
-            © 2026 LEO Club Abomey-Calavi Ortie & Lions Club Abomey-Calavi Acacia. Tous droits réservés.
+            © 2026 Lions Club Abomey-Calavi Acacia & LEO Club Abomey-Calavi Ortie. Tous droits réservés.
           </div>
           <div class="col-md-6 text-md-end mt-2 mt-md-0">
-            Conçu avec passion pour la communauté • District 403 A4
+            District 403 A4 • Lions Clubs International
           </div>
         </div>
 

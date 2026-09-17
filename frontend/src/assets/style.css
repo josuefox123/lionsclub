@@ -1,90 +1,164 @@
-/* Design System - LEO Club Ortie & Lions Club Acacia */
+/* ==========================================================================
+   DESIGN SYSTEM INSTITUTIONNEL - LIONS CLUB ACACIA & LEO CLUB ORTIE
+   Couleurs officielles : Bleu Royal Lions, Or Institutionnel, Marron LEO
+   ========================================================================== */
+
 :root {
-  --lions-gold: #f4c430;
-  --lions-gold-hover: #d4a317;
+  /* Couleurs Institutionnelles Lions Clubs International */
   --lions-navy: #002d62;
+  --lions-navy-dark: #001f44;
+  --lions-gold: #c59b27;
+  --lions-gold-hover: #b0881e;
+  --lions-gold-light: #fef9e7;
+  
+  /* Couleurs Institutionnelles LEO Club */
   --leo-maroon: #800020;
-  --ortie-emerald: #0f766e;
-  --ortie-light-green: #ccfbf1;
-  --dark-bg: #0b1329;
-  --card-bg: #132247;
-  --text-main: #1e293b;
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --leo-maroon-dark: #5c0017;
+  --leo-gold: #d4af37;
+
+  /* Couleurs Utilitaires & Typographie */
+  --bg-light: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: #f8fafc;
+  background-color: var(--bg-light);
   color: var(--text-main);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
-/* Gradients Institutionnels */
-.bg-gradient-lions {
-  background: linear-gradient(135deg, #002d62 0%, #0b1329 100%);
+/* Gradients et Fonds Institutionnels */
+.bg-lions-navy {
+  background-color: var(--lions-navy) !important;
 }
 
-.bg-gradient-leo {
-  background: linear-gradient(135deg, #0f766e 0%, #042f2e 100%);
+.bg-lions-gradient {
+  background: linear-gradient(135deg, #002d62 0%, #001838 100%) !important;
 }
 
-.bg-gradient-hero {
-  background: linear-gradient(135deg, #051937 0%, #004d7a 50%, #008793 100%);
+.bg-leo-gradient {
+  background: linear-gradient(135deg, #800020 0%, #5c0017 100%) !important;
 }
 
-.text-gold {
+.bg-gold-subtle {
+  background-color: var(--lions-gold-light) !important;
+}
+
+.text-lions-gold {
   color: var(--lions-gold) !important;
 }
 
-.btn-gold {
+.text-lions-navy {
+  color: var(--lions-navy) !important;
+}
+
+.text-leo-maroon {
+  color: var(--leo-maroon) !important;
+}
+
+/* Boutons Institutionnels */
+.btn-lions-gold {
   background-color: var(--lions-gold);
-  color: #002d62;
-  font-weight: 700;
-  border: none;
-  transition: all 0.3s ease;
-}
-
-.btn-gold:hover {
-  background-color: var(--lions-gold-hover);
-  color: #000;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(244, 196, 48, 0.3);
-}
-
-.btn-whatsapp {
-  background-color: #25d366;
   color: #ffffff;
-  font-weight: 700;
-  border: none;
-  transition: all 0.3s ease;
-}
-
-.btn-whatsapp:hover {
-  background-color: #1eb857;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
-}
-
-/* Animations et Micro-Interactions */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12) !important;
-}
-
-/* Custom Badges */
-.badge-axe {
-  font-size: 0.8rem;
   font-weight: 600;
-  padding: 0.4em 0.8em;
-  border-radius: 50rem;
+  border: none;
+  transition: all 0.25s ease-in-out;
+}
+
+.btn-lions-gold:hover, .btn-lions-gold:focus {
+  background-color: var(--lions-gold-hover);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(197, 155, 39, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-lions-navy {
+  background-color: var(--lions-navy);
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  transition: all 0.25s ease-in-out;
+}
+
+.btn-lions-navy:hover, .btn-lions-navy:focus {
+  background-color: var(--lions-navy-dark);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 45, 98, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-whatsapp-official {
+  background-color: #128c7e;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  transition: all 0.25s ease-in-out;
+}
+
+.btn-whatsapp-official:hover {
+  background-color: #075e54;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(18, 140, 126, 0.35);
+}
+
+/* Navigation et Cartes */
+.nav-link-custom {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  transition: color 0.2s ease;
+  padding: 0.5rem 1rem;
+}
+
+.nav-link-custom:hover, .nav-link-custom.router-link-active {
+  color: var(--lions-gold) !important;
+}
+
+.card-institution {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--card-bg);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-institution:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 45, 98, 0.08) !important;
+}
+
+/* Badges Institutionnels */
+.badge-leo {
+  background-color: rgba(128, 0, 32, 0.1);
+  color: var(--leo-maroon);
+  font-weight: 600;
+  border: 1px solid rgba(128, 0, 32, 0.2);
+}
+
+.badge-lions {
+  background-color: rgba(0, 45, 98, 0.1);
+  color: var(--lions-navy);
+  font-weight: 600;
+  border: 1px solid rgba(0, 45, 98, 0.2);
+}
+
+/* Layouts et Utilitaires */
+.max-w-800 {
+  max-width: 800px;
+}
+
+.max-w-600 {
+  max-width: 600px;
 }
