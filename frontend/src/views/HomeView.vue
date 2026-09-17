@@ -90,12 +90,6 @@ onUnmounted(() => {
           
           <div class="col-12 col-lg-7 text-center text-lg-start">
             
-            <!-- Badges d'information dynamique du slide -->
-            <div class="d-inline-flex align-items-center gap-2 bg-white bg-opacity-15 backdrop-blur px-3 py-2 rounded-pill mb-3 border border-white border-opacity-25 shadow-sm">
-              <i class="bi bi-shield-check text-lions-gold"></i>
-              <span class="small fw-semibold text-white">District 403 A4 • Abomey-Calavi, Bénin</span>
-            </div>
-
             <h1 class="display-4 fw-bold text-white mb-3 lh-tight">
               Lions Club Abomey-Calavi Acacia <br class="d-none d-md-block" />
               <span class="text-lions-gold">& LEO Club Abomey-Calavi Ortie</span>
