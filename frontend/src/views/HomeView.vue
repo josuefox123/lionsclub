@@ -118,32 +118,32 @@ const badgeClub = (c) => ({
         <div class="hero-overlay"></div>
       </div>
 
-      <!-- Contenu hero (asymétrique : texte gauche, carte droite) -->
+      <!-- Contenu hero (centré & aéré sans encombrement) -->
       <div class="container position-relative py-5" style="z-index:2;">
-        <div class="row align-items-center g-4 g-lg-5">
+        <div class="row align-items-center justify-content-center">
 
-          <!-- Colonne gauche — Texte -->
-          <div class="col-12 col-lg-6 col-xl-7">
-            <div class="hero-text-card">
+          <!-- Colonne Principale — Texte du carrousel -->
+          <div class="col-12 col-lg-10 col-xl-8">
+            <div class="hero-text-card text-center text-md-start">
               <!-- Eyebrow Badge haute visibilité -->
               <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill mb-3" style="background: rgba(235,183,0,.18); border: 1px solid rgba(235,183,0,.5); color: #EBB700; font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;">
                 <i class="bi bi-star-fill" style="font-size:.65rem;"></i>
                 <span v-html="slides[activeIndex].eyebrow"></span>
               </div>
 
-              <!-- Titre du Slide avec haute lisibilité -->
+              <!-- Titre du Slide -->
               <h1
-                style="font-size:clamp(2rem,5.5vw,3.6rem); font-weight:900; color:#ffffff; line-height:1.12; margin-bottom:1.2rem; text-shadow:0 4px 18px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.9);"
+                style="font-size:clamp(2.2rem,5.5vw,3.8rem); font-weight:900; color:#ffffff; line-height:1.12; margin-bottom:1.2rem; text-shadow:0 4px 18px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.9);"
                 v-html="slides[activeIndex].title.replace(/\n/g,'<br/>')"
               ></h1>
 
               <!-- Description sous le titre -->
-              <p style="font-size:1.05rem; color:#f1f5f9; max-width:540px; margin-bottom:1.8rem; line-height:1.7; text-shadow:0 2px 10px rgba(0,0,0,.7);">
+              <p class="mx-auto mx-md-0" style="font-size:1.08rem; color:#f1f5f9; max-width:600px; margin-bottom:1.8rem; line-height:1.7; text-shadow:0 2px 10px rgba(0,0,0,.7);">
                 Alliance institutionnelle du <strong style="color:#ffffff; text-decoration: underline decoration-warning decoration-2;">Lions Club Abomey-Calavi Acacia</strong> et du <strong style="color:#EBB700; font-weight:700;">LEO Club Abomey-Calavi Ortie</strong> — au service des populations béninoises depuis leur fondation.
               </p>
 
               <!-- Boutons d'action -->
-              <div class="d-flex flex-wrap gap-3 mb-4">
+              <div class="d-flex flex-wrap justify-content-center justify-content-md-start gap-3 mb-4">
                 <RouterLink to="/adhesion" class="btn-yellow">
                   <i class="bi bi-person-plus-fill"></i> Rejoindre l'Alliance
                 </RouterLink>
@@ -153,7 +153,7 @@ const badgeClub = (c) => ({
               </div>
 
               <!-- Indicateurs et contrôles du carroussel -->
-              <div class="d-flex align-items-center gap-3 pt-2" style="border-top: 1px solid rgba(255,255,255,.15);">
+              <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-3 pt-3" style="border-top: 1px solid rgba(255,255,255,.15);">
                 <button @click="prev" aria-label="Précédent"
                   style="width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;">
                   <i class="bi bi-chevron-left" style="font-size:.85rem;"></i>
@@ -172,41 +172,6 @@ const badgeClub = (c) => ({
             </div>
           </div>
 
-          <!-- Colonne droite — Carte Clubs (forme organique Hopenest) -->
-          <div class="col-12 col-lg-6 col-xl-5">
-            <div class="organic-shape" style="border-radius:60% 40% 55% 45% / 45% 55% 40% 60%; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.35); border: 4px solid rgba(235,183,0,.4);">
-              <img
-                src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=800&q=80"
-                alt="Membres LEO et Lions Club Abomey-Calavi"
-                style="width:100%; height:380px; object-fit:cover;"
-                loading="lazy"
-              />
-            </div>
-
-            <!-- Cartes clubs superposées -->
-            <div style="margin-top:-2rem; position:relative; z-index:3;">
-              <!-- Carte Lions Club Acacia -->
-              <div style="background:rgba(0,35,112,.92); backdrop-filter:blur(16px); border:1px solid rgba(235,183,0,.3); border-radius:10px; padding:1.1rem 1.35rem; margin-bottom:.6rem; display:flex; align-items:center; gap:1rem;">
-                <img :src="logoAcacia" alt="Fanion Lions Club Acacia" style="height:52px; width:auto; object-fit:contain; flex-shrink:0; filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));" />
-                <div>
-                  <div style="font-weight:900; font-size:.95rem; color:#fff; text-transform:uppercase; letter-spacing:.03em;">Lions Club Acacia</div>
-                  <div style="font-size:.73rem; color:rgba(255,255,255,.55);">Club Parrain &bull; Cadres &amp; Philanthropie</div>
-                </div>
-                <span style="margin-left:auto; font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#EBB700; border:1px solid rgba(235,183,0,.4); border-radius:50px; padding:.18rem .6rem; white-space:nowrap;">30+ ans</span>
-              </div>
-
-              <!-- Carte LEO Club Ortie -->
-              <div style="background:rgba(122,37,130,.88); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,.15); border-radius:10px; padding:1.1rem 1.35rem; display:flex; align-items:center; gap:1rem;">
-                <img :src="logoOrtie" alt="Fanion LEO Club Ortie" style="height:52px; width:auto; object-fit:contain; flex-shrink:0; filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));" />
-                <div>
-                  <div style="font-weight:900; font-size:.95rem; color:#fff; text-transform:uppercase; letter-spacing:.03em;">LEO Club Ortie</div>
-                  <div style="font-size:.73rem; color:rgba(255,255,255,.55);">Club Filleul &bull; Leadership &amp; Jeunesse</div>
-                </div>
-                <span style="margin-left:auto; font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#EBB700; border:1px solid rgba(235,183,0,.4); border-radius:50px; padding:.18rem .6rem; white-space:nowrap;">12–30 ans</span>
-              </div>
-            </div>
-
-          </div>
         </div>
       </div>
     </section>
