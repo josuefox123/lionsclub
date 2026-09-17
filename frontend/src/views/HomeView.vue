@@ -124,46 +124,51 @@ const badgeClub = (c) => ({
 
           <!-- Colonne gauche — Texte -->
           <div class="col-12 col-lg-6 col-xl-7">
-            <div
-              class="mb-3"
-              style="display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#EBB700;"
-              v-html="slides[activeIndex].eyebrow"
-            ></div>
-
-            <h1
-              style="font-size:clamp(2.2rem,6vw,4rem); font-weight:900; color:#fff; line-height:1.1; margin-bottom:1.2rem;"
-              v-html="slides[activeIndex].title.replace(/\n/g,'<br/>')"
-            ></h1>
-
-            <p style="font-size:1rem; color:rgba(255,255,255,.7); max-width:520px; margin-bottom:2rem; line-height:1.75;">
-              Alliance institutionnelle du <strong style="color:#fff;">Lions Club Abomey-Calavi Acacia</strong> et du <strong style="color:#EBB700;">LEO Club Abomey-Calavi Ortie</strong> — au service des populations béninoises depuis leur fondation.
-            </p>
-
-            <div class="d-flex flex-wrap gap-3 mb-5">
-              <RouterLink to="/adhesion" class="btn-yellow">
-                <i class="bi bi-person-plus-fill"></i> Rejoindre l'Alliance
-              </RouterLink>
-              <RouterLink to="/actions" class="btn-outline-white">
-                <i class="bi bi-play-circle-fill"></i> Nos Actions
-              </RouterLink>
-            </div>
-
-            <!-- Indicateurs du carroussel -->
-            <div class="d-flex align-items-center gap-3">
-              <button @click="prev" aria-label="Précédent"
-                style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;">
-                <i class="bi bi-chevron-left" style="font-size:.8rem;"></i>
-              </button>
-              <div class="d-flex gap-2">
-                <button v-for="(s,i) in slides" :key="i" @click="goTo(i)" :aria-label="'Slide '+(i+1)"
-                  style="border:none; padding:0; cursor:pointer; border-radius:3px; height:4px; transition:all .35s;"
-                  :style="{ width: activeIndex===i ? '32px':'10px', background: activeIndex===i ? '#EBB700':'rgba(255,255,255,.35)' }"
-                ></button>
+            <div class="hero-text-card">
+              <!-- Eyebrow Badge haute visibilité -->
+              <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill mb-3" style="background: rgba(235,183,0,.18); border: 1px solid rgba(235,183,0,.5); color: #EBB700; font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;">
+                <i class="bi bi-star-fill" style="font-size:.65rem;"></i>
+                <span v-html="slides[activeIndex].eyebrow"></span>
               </div>
-              <button @click="next" aria-label="Suivant"
-                style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;">
-                <i class="bi bi-chevron-right" style="font-size:.8rem;"></i>
-              </button>
+
+              <!-- Titre du Slide avec haute lisibilité -->
+              <h1
+                style="font-size:clamp(2rem,5.5vw,3.6rem); font-weight:900; color:#ffffff; line-height:1.12; margin-bottom:1.2rem; text-shadow:0 4px 18px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.9);"
+                v-html="slides[activeIndex].title.replace(/\n/g,'<br/>')"
+              ></h1>
+
+              <!-- Description sous le titre -->
+              <p style="font-size:1.05rem; color:#f1f5f9; max-width:540px; margin-bottom:1.8rem; line-height:1.7; text-shadow:0 2px 10px rgba(0,0,0,.7);">
+                Alliance institutionnelle du <strong style="color:#ffffff; text-decoration: underline decoration-warning decoration-2;">Lions Club Abomey-Calavi Acacia</strong> et du <strong style="color:#EBB700; font-weight:700;">LEO Club Abomey-Calavi Ortie</strong> — au service des populations béninoises depuis leur fondation.
+              </p>
+
+              <!-- Boutons d'action -->
+              <div class="d-flex flex-wrap gap-3 mb-4">
+                <RouterLink to="/adhesion" class="btn-yellow">
+                  <i class="bi bi-person-plus-fill"></i> Rejoindre l'Alliance
+                </RouterLink>
+                <RouterLink to="/actions" class="btn-outline-white">
+                  <i class="bi bi-play-circle-fill"></i> Nos Actions
+                </RouterLink>
+              </div>
+
+              <!-- Indicateurs et contrôles du carroussel -->
+              <div class="d-flex align-items-center gap-3 pt-2" style="border-top: 1px solid rgba(255,255,255,.15);">
+                <button @click="prev" aria-label="Précédent"
+                  style="width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;">
+                  <i class="bi bi-chevron-left" style="font-size:.85rem;"></i>
+                </button>
+                <div class="d-flex gap-2">
+                  <button v-for="(s,i) in slides" :key="i" @click="goTo(i)" :aria-label="'Slide '+(i+1)"
+                    style="border:none; padding:0; cursor:pointer; border-radius:4px; height:5px; transition:all .35s;"
+                    :style="{ width: activeIndex===i ? '34px':'12px', background: activeIndex===i ? '#EBB700':'rgba(255,255,255,.4)' }"
+                  ></button>
+                </div>
+                <button @click="next" aria-label="Suivant"
+                  style="width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;">
+                  <i class="bi bi-chevron-right" style="font-size:.85rem;"></i>
+                </button>
+              </div>
             </div>
           </div>
 

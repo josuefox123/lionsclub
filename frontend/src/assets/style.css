@@ -377,8 +377,16 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   display: flex;
   align-items: center;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
 }
-@media (max-width: 767px) { .hero { min-height: 100svh; } }
+@media (max-width: 991px) { 
+  .hero { 
+    min-height: auto; 
+    padding-top: 7rem; 
+    padding-bottom: 3rem;
+  } 
+}
 
 .hero-slide {
   position: absolute; inset: 0;
@@ -392,7 +400,26 @@ img { max-width: 100%; display: block; }
 .hero-slide.active img { transform: scale(1); }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(105deg, rgba(0,35,112,.97) 0%, rgba(0,51,141,.9) 45%, rgba(122,37,130,.82) 100%);
+  background: linear-gradient(110deg, rgba(0,25,80,.97) 0%, rgba(0,40,120,.92) 50%, rgba(90,20,100,.85) 100%);
+}
+
+/* Card en verre pour maximiser la lisibilité du texte sur tout écran */
+.hero-text-card {
+  position: relative;
+  background: rgba(0, 18, 55, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2.5rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+@media (max-width: 575px) {
+  .hero-text-card {
+    padding: 1.5rem 1.25rem;
+    background: rgba(0, 15, 45, 0.70);
+    border-radius: var(--radius-md);
+  }
 }
 
 /* Forme organique pour image hero */
