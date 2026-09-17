@@ -1,14 +1,37 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
+
+/* ─── Comportement navbar au défilement ─────────────────────────────────── */
+const scrolled = ref(false);
+
+const handleScroll = () => {
+  scrolled.value = window.scrollY > 60;
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll, { passive: true });
+});
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
   <div class="d-flex flex-column min-vh-100">
 
     <!-- ═══════════════════════════════════════════
-         TOPBAR — Contacts & CTA Principal
+         BARRE DE NAVIGATION FIXE (Topbar + Navbar)
+         · Transparente en haut de page
+         · Opaque + shadow au défilement
     ═══════════════════════════════════════════ -->
-    <div class="topbar">
+    <div
+      class="fixed-header"
+      :class="{ 'fixed-header--scrolled': scrolled }"
+    >
+
+    <!-- TOPBAR — Contacts & CTA Principal -->
+    <div class="topbar" :class="{ 'topbar--scrolled': scrolled }">
       <div class="container">
         <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
 
@@ -37,10 +60,10 @@ import { RouterLink, RouterView } from 'vue-router';
       </div>
     </div>
 
-    <!-- ═══════════════════════════════════════════
-         NAVBAR PRINCIPALE
-    ═══════════════════════════════════════════ -->
-    <nav class="navbar navbar-expand-lg navbar-official sticky-top">
+    <!-- NAVBAR PRINCIPALE -->
+    <nav class="navbar navbar-expand-lg navbar-official"
+      :class="{ 'navbar-official--scrolled': scrolled }"
+    >
       <div class="container">
 
         <RouterLink class="navbar-brand" to="/">
@@ -70,6 +93,11 @@ import { RouterLink, RouterView } from 'vue-router';
 
       </div>
     </nav>
+
+    </div><!-- /.fixed-header -->
+
+    <!-- Espaceur compensant la hauteur de la barre fixe -->
+    <div class="fixed-header-spacer"></div>
 
     <!-- Contenu de la page -->
     <main class="flex-grow-1">

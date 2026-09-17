@@ -81,15 +81,71 @@ a:hover { color: var(--lions-blue-dark); }
 img { max-width: 100%; display: block; }
 
 /* ──────────────────────────────────────────────────────────────────────────────
+   BARRE DE NAVIGATION FIXE — Comportement au défilement
+   ────────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * .fixed-header  : conteneur fixe en haut de la fenêtre.
+ * État par défaut (en haut de page) : transparent avec léger glassmorphism.
+ * État scrollé   : fond bleu solide + ombre portée.
+ */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  transition: background .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
+
+  /* En haut de page : semi-transparent */
+  background: rgba(0, 35, 112, .30);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: none;
+}
+
+/* Scrollé : bleu solide opaque */
+.fixed-header--scrolled {
+  background: rgba(0, 35, 112, .98) !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .2) !important;
+}
+
+/**
+ * Espaceur : pousse le contenu de la page sous la barre fixe.
+ * La hauteur est réglée via une variable CSS recalculée dynamiquement
+ * (ici on approxime la hauteur topbar + navbar ≈ 88px).
+ */
+.fixed-header-spacer {
+  height: 88px;
+}
+
+@media (max-width: 991px) {
+  /* Sur mobile, le menu collapse change la hauteur dynamiquement */
+  .fixed-header-spacer { height: 72px; }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
    TOPBAR
    ────────────────────────────────────────────────────────────────────────────── */
 .topbar {
-  background: var(--lions-blue-dark);
+  background: transparent;
   padding: .55rem 0;
   font-size: .78rem;
   font-weight: 400;
   color: rgba(255,255,255,.6);
-  border-bottom: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  transition: background .35s ease, max-height .35s ease, padding .35s ease, opacity .35s ease;
+  max-height: 44px;
+  overflow: hidden;
+}
+/* Topbar masquée au scroll pour gagner de la hauteur */
+.topbar--scrolled {
+  max-height: 0;
+  padding: 0;
+  opacity: 0;
+  border-bottom: none;
 }
 .topbar a { color: rgba(255,255,255,.6); transition: var(--transition); }
 .topbar a:hover { color: var(--lions-yellow); }
@@ -99,9 +155,13 @@ img { max-width: 100%; display: block; }
    NAVBAR PRINCIPALE
    ────────────────────────────────────────────────────────────────────────────── */
 .navbar-official {
-  background: var(--lions-blue) !important;
+  background: transparent !important;
   padding: 0;
-  box-shadow: 0 4px 20px rgba(0,51,141,.25);
+  transition: background .35s ease;
+}
+/* Scrolled : renforcé par fixed-header--scrolled */
+.navbar-official--scrolled {
+  background: transparent !important;
 }
 
 .navbar-official .navbar-brand {
