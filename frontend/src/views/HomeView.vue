@@ -43,7 +43,59 @@ let timer = null;
 const next = () => { activeIndex.value = (activeIndex.value + 1) % slides.length; };
 const prev = () => { activeIndex.value = (activeIndex.value - 1 + slides.length) % slides.length; };
 const goTo = (i) => { activeIndex.value = i; };
-onMounted(() => { timer = setInterval(next, 6000); });
+
+/* ─── STATISTIQUES ANIMÉES ────────────────────────────────────────────────── */
+const statsSectionRef = ref(null);
+const stats = ref([
+  { id: 1, icon: 'bi-people-fill', target: 50, current: 0, suffix: '+', label: 'Membres Actifs' },
+  { id: 2, icon: 'bi-award-fill', target: 100, current: 0, suffix: '+', label: 'Actions Réalisées' },
+  { id: 3, icon: 'bi-compass-fill', target: 5, current: 0, suffix: '', label: "Axes d'Intervention" },
+  { id: 4, icon: 'bi-globe2', target: 208, current: 0, suffix: '', label: 'Pays LCI' }
+]);
+
+let statAnimated = false;
+const animateStats = () => {
+  if (statAnimated) return;
+  statAnimated = true;
+
+  const duration = 2200;
+  const startTime = performance.now();
+
+  const step = (now) => {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+
+    stats.value.forEach(item => {
+      item.current = Math.floor(ease * item.target);
+    });
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      stats.value.forEach(item => { item.current = item.target; });
+    }
+  };
+
+  requestAnimationFrame(step);
+};
+
+onMounted(() => {
+  timer = setInterval(next, 6000);
+
+  if ('IntersectionObserver' in window && statsSectionRef.value) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        animateStats();
+        observer.disconnect();
+      }
+    }, { threshold: 0.15 });
+    observer.observe(statsSectionRef.value);
+  } else {
+    animateStats();
+  }
+});
+
 onUnmounted(() => { if (timer) clearInterval(timer); });
 
 /* ─── DOMAINES D'ACTION ──────────────────────────────────────────────────── */
@@ -177,33 +229,20 @@ const badgeClub = (c) => ({
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         STAT STRIP — Bande jaune (Yellow Strip LCI)
+         STAT STRIP ANIMÉ — Bande jaune avec compteurs dynamiques
     ═══════════════════════════════════════════════════════════════ -->
-    <div class="stat-strip">
+    <div class="stat-strip" ref="statsSectionRef">
       <div class="container">
-        <div class="row g-3 text-center">
-          <div class="col-6 col-md-3">
-            <div class="stat-item">
-              <div class="stat-num">50+</div>
-              <div class="stat-label">Membres Actifs</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="stat-item">
-              <div class="stat-num">100+</div>
-              <div class="stat-label">Actions Réalisées</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="stat-item">
-              <div class="stat-num">5</div>
-              <div class="stat-label">Axes d'Intervention</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="stat-item">
-              <div class="stat-num">208</div>
-              <div class="stat-label">Pays LCI</div>
+        <div class="row g-3 g-md-4 text-center">
+          <div v-for="stat in stats" :key="stat.id" class="col-6 col-md-3">
+            <div class="stat-card">
+              <div class="stat-icon-wrapper">
+                <i :class="['bi', stat.icon]"></i>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">{{ stat.current }}{{ stat.suffix }}</div>
+                <div class="stat-label">{{ stat.label }}</div>
+              </div>
             </div>
           </div>
         </div>
