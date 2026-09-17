@@ -237,6 +237,102 @@ img { max-width: 100%; display: block; }
 }
 
 /* ──────────────────────────────────────────────────────────────────────────────
+   BARRE DE NAVIGATION MOBILE BASSE (BARRE FLOOTTANTE MATERIAL DESIGN 3.0)
+   Inspiré des schémas Material Design 3.0 (Onglets Pill Actifs)
+   ────────────────────────────────────────────────────────────────────────────── */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1080;
+    background: rgba(0, 20, 65, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.45rem 0.5rem calc(0.45rem + env(safe-area-inset-bottom, 0px));
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.65);
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--radius-md);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 60px;
+  }
+
+  /* Conteneur icône avec effet Pill Active Highlight (Material Design 3.0) */
+  .mobile-nav-icon {
+    width: 48px;
+    height: 28px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 2px;
+  }
+
+  .mobile-nav-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: all 0.3s ease;
+  }
+
+  /* État Actif (Inspired by Google Material 3 Option 1 & 6) */
+  .mobile-nav-item.active {
+    color: var(--lions-yellow);
+  }
+
+  .mobile-nav-item.active .mobile-nav-icon {
+    background: var(--lions-yellow);
+    color: var(--lions-blue-dark);
+    box-shadow: 0 4px 14px rgba(235, 183, 0, 0.4);
+    transform: scale(1.06);
+  }
+
+  .mobile-nav-item.active .mobile-nav-label {
+    font-weight: 800;
+    color: var(--lions-yellow);
+  }
+
+  /* Bouton spécial CTA Rejoindre */
+  .mobile-nav-item.mobile-nav-cta {
+    color: var(--lions-blue-dark);
+  }
+  .mobile-nav-item.mobile-nav-cta .mobile-nav-icon {
+    background: linear-gradient(135deg, var(--lions-yellow) 0%, #c99d00 100%);
+    color: var(--lions-blue-dark);
+    box-shadow: 0 4px 12px rgba(235, 183, 0, 0.35);
+  }
+  .mobile-nav-item.mobile-nav-cta .mobile-nav-label {
+    color: var(--lions-yellow);
+    font-weight: 800;
+  }
+
+  /* Ajustement de l'espaceur bas de page */
+  main {
+    padding-bottom: 75px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
    BOUTONS OFFICIELS
    ────────────────────────────────────────────────────────────────────────────── */
 .btn-yellow {

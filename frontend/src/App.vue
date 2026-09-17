@@ -62,13 +62,13 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- NAVBAR PRINCIPALE -->
+    <!-- NAVBAR PRINCIPALE (Desktop & Header Mobile) -->
     <nav class="navbar navbar-expand-lg navbar-official"
       :class="{ 'navbar-official--scrolled': scrolled }"
     >
       <div class="container">
 
-        <RouterLink class="navbar-brand" to="/">
+        <RouterLink class="navbar-brand me-auto" to="/">
           <!-- Logos des deux clubs côte à côte dans la navbar -->
           <div class="d-flex align-items-center gap-2" style="flex-shrink:0;">
             <img :src="logoOrtie"  alt="Logo LEO Club Ortie"  style="height:44px; width:auto; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));" />
@@ -80,14 +80,9 @@ onUnmounted(() => {
           </div>
         </RouterLink>
 
-        <button class="navbar-toggler border-0 text-white shadow-none"
-          type="button" data-bs-toggle="collapse" data-bs-target="#navOfficial"
-          aria-controls="navOfficial" aria-expanded="false">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navOfficial">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-0 py-3 py-lg-0">
+        <!-- Navigation Desktop uniquement -->
+        <div class="collapse navbar-collapse d-none d-lg-block" id="navOfficial">
+          <ul class="navbar-nav ms-auto align-items-center gap-1">
             <li class="nav-item"><RouterLink class="nav-link-official nav-link" to="/">Accueil</RouterLink></li>
             <li class="nav-item"><RouterLink class="nav-link-official nav-link" to="/a-propos">À Propos</RouterLink></li>
             <li class="nav-item"><RouterLink class="nav-link-official nav-link" to="/actions">Nos Actions</RouterLink></li>
@@ -99,6 +94,44 @@ onUnmounted(() => {
     </nav>
 
     </div><!-- /.fixed-header -->
+
+    <!-- BARRE DE NAVIGATION MOBILE BASSE (Material Design 3.0 Floating Pill Tabs) -->
+    <nav class="mobile-bottom-nav">
+      <RouterLink to="/" class="mobile-nav-item" exact-active-class="active">
+        <div class="mobile-nav-icon">
+          <i class="bi bi-house-door-fill"></i>
+        </div>
+        <span class="mobile-nav-label">Accueil</span>
+      </RouterLink>
+
+      <RouterLink to="/a-propos" class="mobile-nav-item" active-class="active">
+        <div class="mobile-nav-icon">
+          <i class="bi bi-info-circle-fill"></i>
+        </div>
+        <span class="mobile-nav-label">À Propos</span>
+      </RouterLink>
+
+      <RouterLink to="/actions" class="mobile-nav-item" active-class="active">
+        <div class="mobile-nav-icon">
+          <i class="bi bi-grid-fill"></i>
+        </div>
+        <span class="mobile-nav-label">Actions</span>
+      </RouterLink>
+
+      <RouterLink to="/contact" class="mobile-nav-item" active-class="active">
+        <div class="mobile-nav-icon">
+          <i class="bi bi-envelope-fill"></i>
+        </div>
+        <span class="mobile-nav-label">Contact</span>
+      </RouterLink>
+
+      <RouterLink to="/adhesion" class="mobile-nav-item mobile-nav-cta" active-class="active">
+        <div class="mobile-nav-icon">
+          <i class="bi bi-person-plus-fill"></i>
+        </div>
+        <span class="mobile-nav-label">Rejoindre</span>
+      </RouterLink>
+    </nav>
 
     <!-- Espaceur compensant la hauteur de la barre fixe -->
     <div class="fixed-header-spacer"></div>
